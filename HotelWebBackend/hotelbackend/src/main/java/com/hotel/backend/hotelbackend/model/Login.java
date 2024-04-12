@@ -1,6 +1,10 @@
 package com.hotel.backend.hotelbackend.model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 @Entity
 public class Login {
     @Id
@@ -27,4 +31,8 @@ public class Login {
     public Login() {
 
     }
+    @OneToOne(mappedBy = "login", cascade = CascadeType.ALL)
+    @JsonManagedReference 
+    private Customer customer;
+
 }

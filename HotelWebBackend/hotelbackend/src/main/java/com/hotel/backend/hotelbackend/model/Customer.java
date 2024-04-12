@@ -1,7 +1,6 @@
 package com.hotel.backend.hotelbackend.model;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -13,17 +12,17 @@ public class Customer {
 	private String emailId;
 	
 	public Customer() {
-		
+
 	}
-	
+
+	public String getId() {
+		return id;
+	}
 	public Customer(String firstName, String lastName, String emailId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
-	}
-	public String getId() {
-		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -46,4 +45,10 @@ public class Customer {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+	
+    
+	@OneToOne
+	@JsonBackReference
+	private Login login;
+
 }

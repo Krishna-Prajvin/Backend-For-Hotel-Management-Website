@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hotel.backend.hotelbackend.model.Login;
 import com.hotel.backend.hotelbackend.repository.LoginRepository;
-
-
 @Service
 public class LoginService {
     @Autowired
@@ -46,4 +44,5 @@ public class LoginService {
         cr.deleteById(email);
         return true;
     }
+    
 }

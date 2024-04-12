@@ -1,6 +1,5 @@
 package com.hotel.backend.hotelbackend.controller;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +68,18 @@ public ResponseEntity<List<Customer>> getAll()
             }
             return new ResponseEntity<>(false,HttpStatus.NOT_FOUND);
         }
-	
-	
+        @GetMapping("/api/product/{offset}/{pagesize}/{field}")
+        public List<Customer> getsorting(@PathVariable int offset,@PathVariable int pagesize,@PathVariable String field)
+        {
+            return cs.getsort(offset,pagesize,field);
+        }
+        @GetMapping("/api/product/sortBy/{field}")
+        public List<Customer> g(@PathVariable String field)
+        {
+            return cs.sort(field);
+    }
+    @GetMapping("/status")
+    public List<Customer> getDetailsbyStatus() {
+        return cs.getDetailsbyStatus();
+    }
 }
-        
